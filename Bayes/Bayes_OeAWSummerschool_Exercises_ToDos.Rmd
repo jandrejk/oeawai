@@ -27,6 +27,22 @@ The probability mass function of a binomial distribution with parameters *size* 
 Use type = "h" for the plot.
 
 ```{r}
+theta<-c(0.02,0.1,0.2)
+Y<-rep(NA,3)
+N_samplesize<-20
+quantiles<-0:N_samplesize
+?dbinom()
+
+Y1<-dbinom(x=quantiles,size=N_samplesize,prob=theta[1])
+Y2<-dbinom(x=quantiles,size=N_samplesize,prob=theta[2])
+Y3<-dbinom(x=quantiles,size=N_samplesize,prob=theta[3])
+
+plot(x=0:N_samplesize-0.1,y=Y1,main="Probability mass function of y|theta",type="h",ylim = c(0,1.),xlim=c(0,15), col="green")
+lines(x=0:N_samplesize,y=Y2,type="h",col="red")
+lines(x=0:N_samplesize+0.1,y=Y3,type="h",col="blue")
+
+legend("topright", legend = c("theta = 0.02", "theta = 0.1", "theta = 0.2"), col = c("green","red","blue"),
+       lty = c(1,1)) # Adds a legend to the plot
 
 ```
 
@@ -42,7 +58,42 @@ The beta distribution with parameters *shape1 = a* and *shape2 = b* is implemete
 with functions *dbeta*, *pbeta*, *qbeta* and *rbeta* as described above. 
 
 ```{r}
+n <- 20
+y <- 0
 
+theta <- seq(0, 1, by = 0.01)
+
+#Prior and posterior a1=1 and b1=1 
+a1 <- 1
+b1 <- 1
+
+a1n <- a1+y
+b1n <- b1+n-y
+
+p.theta.prior1 <- dbeta(theta, shape1 = a1, shape2 = b1)
+p.theta.posterior1 <- dbeta(theta, shape1 = a1n, shape2 = b1n)
+
+plot(theta, p.theta.prior1, col = "red", type = "l", xlab = "theta", ylab = "Density", ylim = c(0,n),
+     main = "Prior/Posterior distribution of theta (Scenario 1)")
+lines(theta , p.theta.posterior1, type = "l", col = "blue")
+legend("topright", legend = c("Prior", "Posterior"),
+       col = c("red", "blue"), lty = 1)
+
+
+#Prior and posterior for a2=2 and b2=20 
+a2 <- 2
+b2 <- 20
+
+a2n <- a2+y
+b2n <- b2+n-y
+p.theta.prior2 <- dbeta(theta, shape1 = a2, shape2 = b2)
+p.theta.posterior2 <- dbeta(theta, shape1 = a2n, shape2 = b2n)
+
+plot(theta, p.theta.prior2, col = "red", type = "l", xlab = "theta", ylab = "Density", ylim = c(0,n),
+     main = "Prior/Posterior distribution of theta (Scenario 2)")
+lines(theta , p.theta.posterior2, type = "l", col = "blue")
+legend("topright", legend = c("Prior", "Posterior"),
+       col = c("red", "blue"), lty = 1)
 ```
 
 

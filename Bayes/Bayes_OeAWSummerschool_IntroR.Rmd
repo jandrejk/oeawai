@@ -1,5 +1,5 @@
 ---
-title: " Bayes at ÖAW Summerschool, Ligist"
+title: " Bayes at ?AW Summerschool, Ligist"
 author: "Helga Wagner and Tim Foeckersperger"
 date: "`r Sys.Date()`"
 output: bookdown::gitbook
@@ -10,16 +10,16 @@ The first thing to do is to install the R-package *bookdown*.
 
 To run the code below remove the hashtag, copy the command to the console and press Enter.
 ```{r}
-# install.packages("bookdown")
+install.packages("bookdown")
 ```
 You may also install further packages used in the exercises:
 ```{r}
-# install.packages("pscl") 
-# install.packages("invgamma")
-# install.packages("MASS")
-# install.packages("truncnorm")
-# install.packages("rjags")
-# install.packages("coda")
+install.packages("pscl") 
+install.packages("invgamma")
+install.packages("MASS")
+install.packages("truncnorm")
+install.packages("rjags")
+install.packages("coda")
 ```
 Next we load the package *bookdown*
 ```{r}
